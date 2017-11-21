@@ -59,7 +59,7 @@
                     <configuration>
                         <autocommit>true</autocommit>
                         <srcFiles>
-                              <srcFile>TestPacket.sql</srcFile>
+                              <srcFile>TestPaket.sql</srcFile>
                         </srcFiles>
                     </configuration>
                 </execution>
