@@ -8,7 +8,7 @@
   <properties>
     <oracle.version>12.2.0.1</oracle.version>
         <db.host>192.168.56.102</db.host>
-        <db.service>orcl12c</db.service>
+        <db.service>orcl</db.service>
         <db.username>ciuttest</db.username>
         <db.password>ciuttest</db.password>
   </properties>
