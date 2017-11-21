@@ -10,7 +10,7 @@ end;
 
 create or replace package body test_betwnstr as
 
-  procedure basic_usage is
+  procedure basic_firstTest is
   begin
     ut.expect( betwnstr( '1234567', 2, 5 ) ).to_equal('2345');
   end;
