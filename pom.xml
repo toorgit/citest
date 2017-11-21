@@ -7,7 +7,7 @@
   <name>ciTest2</name>
   <properties>
     <oracle.version>12.2.0.1</oracle.version>
-        <db.host>192.168.56.101</db.host>
+        <db.host>192.168.56.102</db.host>
         <db.service>orcl12c</db.service>
         <db.username>ciuttest</db.username>
         <db.password>ciuttest</db.password>
@@ -19,32 +19,47 @@
             <artifactId>sql-maven-plugin</artifactId>
             <version>1.5</version>
   
-              <dependencies>
-                <dependency>
-                    <groupId>com.oracle</groupId>
-                    <artifactId>ojdbc8</artifactId>
-                    <version>${oracle.version}</version>
-                </dependency>
-              </dependencies>
+            <dependencies>
+              <dependency>
+                  <groupId>com.oracle</groupId>
+                  <artifactId>ojdbc8</artifactId>
+                  <version>${oracle.version}</version>
+              </dependency>
+            </dependencies>
+            
+            <configuration>
+              <driver>oracle.jdbc.driver.OracleDriver</driver>
+              <url>jdbc:oracle:thin:@${db.host}:1521:${db.service}</url>
+              <username>${db.username}</username>
+              <password>${db.password}</password>
+              <delimiter>/</delimiter>
+              <delimiterType>row</delimiterType>
+            </configuration>
             <executions>
                 <execution>
-                    <id>create-schema</id>
+                    <id>create-funktion</id>
                     <phase>process-test-resources</phase>
                     <goals>
                         <goal>execute</goal>
                     </goals>
                     <configuration>
-                        <driver>oracle.jdbc.driver.OracleDriver</driver>
-                        <url>jdbc:oracle:thin:@${db.host}:1521:${db.service}</url>
-                        <username>${db.username}</username>
-                        <password>${db.password}</password>
                         <autocommit>true</autocommit>
-                        <delimiter>/</delimiter>
-                        <delimiterType>row</delimiterType>
                         <srcFiles>
                               <srcFile>Funktion.sql</srcFile>
-                              <!-- <srcFile>TestPacket.sql</srcFile>
-                              <srcFile>Start_test.sql</srcFile> --> 
+                        </srcFiles>
+                    </configuration>
+                </execution>
+                
+                <execution>
+                    <id>create-Test</id>
+                    <phase>process-test-resources</phase>
+                    <goals>
+                        <goal>execute</goal>
+                    </goals>
+                    <configuration>
+                        <autocommit>true</autocommit>
+                        <srcFiles>
+                              <srcFile>TestPacket.sql</srcFile>
                         </srcFiles>
                     </configuration>
                 </execution>
